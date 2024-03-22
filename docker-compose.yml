@@ -10,7 +10,7 @@ services:
   web:
     build: ./web
     ports:
-      - "5000:5000"
+      - "3000:3000"
     depends_on:
       - db
 
@@ -26,6 +26,6 @@ services:
   admin_panel:
     build: ./admin_panel
     ports:
-      - "5000:5000"
+      - "7000:7000"
     depends_on:
       - db

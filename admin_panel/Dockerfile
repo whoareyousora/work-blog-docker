@@ -6,3 +6,5 @@ COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 
 CMD ["python3", "admin_app.py"]
+
+EXPOSE 7000
