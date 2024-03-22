@@ -1,0 +1,31 @@
+version: '3'
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+  web:
+    build: ./web
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  db:
+    image: "postgres:latest"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_DB: blog_db
+      POSTGRES_USER: blog_user
+      POSTGRES_PASSWORD: blog_password
+  
+  admin_panel:
+    build: ./admin_panel
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
